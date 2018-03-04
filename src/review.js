@@ -4,7 +4,7 @@ var Review;
 
     /**
      * Display the next entry that needs reviewing
-     * @param {Array} entries       - candidate entries to search for
+     * @param {Array}    entries    - candidate entries to search for
      *                                next item
      * @param {function} filterNext - predicate function to further
      *                                reduce candidates for next review
