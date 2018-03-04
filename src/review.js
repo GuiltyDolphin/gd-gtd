@@ -8,7 +8,18 @@ var Review = {
     */
     markReviewed: function(lib, entry, filterNext) {
         entry.set("Reviewed", true);
-        var nextReview = lib.entries().find(function(e) {
+        showNextReview(lib.entries(), filterNext);
+    },
+
+/**
+    Display the next entry that needs reviewing
+    @param {Array} entries       - candidate entries to search for next
+                                   item
+    @param {function} filterNext - predicate function to further reduce
+                                   candidates for next review
+    */
+    showNextReview: function(entries, filterNext) {
+        var nextReview = entries.find(function(e) {
             return !e.field("Reviewed") &&
                 (filterNext === undefined ? true : filterNext(e));
         });
@@ -18,4 +29,5 @@ var Review = {
             nextReview.show();
         }
     }
+
 };
