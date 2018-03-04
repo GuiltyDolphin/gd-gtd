@@ -8,7 +8,7 @@ var Review = {
     */
     markReviewed: function(lib, entry, filterNext) {
         entry.set("Reviewed", true);
-        showNextReview(lib.entries(), filterNext);
+        Review.showNextReview(lib.entries(), filterNext);
     },
 
 /**
