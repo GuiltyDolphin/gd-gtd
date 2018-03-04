@@ -8,7 +8,7 @@ var Review = {
     */
     markReviewed: function(lib, entry, filterNext) {
         entry.set("Reviewed", true);
-        var nextReview = lib.entries.find(function(e) {
+        var nextReview = lib.entries().find(function(e) {
             return !e.field("Reviewed") &&
                 (filterNext === undefined ? true : filterNext(e));
         });
