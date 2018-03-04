@@ -8,7 +8,7 @@ var Review;
      *                                next item
      * @param {function} filterNext - predicate function to further
      *                                reduce candidates for next review
-    */
+     */
     function showNextReview(entries, filterNext) {
         var nextReview = entries.find(function(e) {
             return !e.field("Reviewed") &&
