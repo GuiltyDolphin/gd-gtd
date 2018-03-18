@@ -36,7 +36,7 @@ var Guilty = Guilty || {};
      *                           the new backend data as an object
      */
     function setDataFn(entry, setFn) {
-        var backendData = getData(entry);
+        var backendData = getBackend(entry);
         return setFn(copyObject(backendData));
     }
 
