@@ -19,7 +19,12 @@ var Guilty = Guilty || {};
      * @returns {object} the backend data as an object
      */
     function getBackend(entry) {
-        return JSON.parse(entry.field('backendData'));
+        var backendString = entry.field('backendData');
+        if (backendString !== undefined && backendString !== '') {
+            return JSON.parse(backendString);
+        }
+        // backend data hasn't been set yet
+        return {};
     }
 
     /**
