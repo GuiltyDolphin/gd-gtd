@@ -9,9 +9,9 @@ var Guilty = Guilty || {};
      * @returns {boolean} `true` if the entry has been reviewed, `false`
      *                    otherwise
      */
-    function isReviewed(entry) {
+    Review.getReviewed = function(entry) {
         return Guilty.Backend.getData(entry, 'Reviewed') === true;
-    }
+    };
 
     /**
      * Set the review status of an entry
@@ -32,7 +32,7 @@ var Guilty = Guilty || {};
      */
     function showNextReview(entries, filterNext) {
         var nextReview = entries.find(function(e) {
-            return !isReviewed(e) &&
+            return !Review.getReviewed(e) &&
                 (filterNext === undefined ? true : filterNext(e));
         });
         if (nextReview === undefined) {
