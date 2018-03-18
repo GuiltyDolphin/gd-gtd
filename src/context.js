@@ -6,10 +6,9 @@ var Guilty = Guilty || {};
      * Determine contexts that should be associated with an action based
      * on its name
      *
-     * @param  {String} title    - the action title
-     * @return {Array}  contexts - an array containing the names of the
-     *                             contexts that should be associated
-     *                             with the action
+     * @param   {string}   title - the action title
+     * @returns {string[]} list containing the names of the contexts
+     *                     that should be associated with the action
      */
     Context.contextsByName = function(title) {
         if (title.startsWith('Draft ideas re: ')) {
