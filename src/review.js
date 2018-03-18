@@ -1,4 +1,4 @@
-var Review;
+var Guilty = Guilty || {};
 
 (function( Review, undefined ) {
 
@@ -34,4 +34,4 @@ var Review;
         showNextReview(lib.entries(), filterNext);
     };
 
-}( Review = Review || {} ));
+}( Guilty.Review = Guilty.Review || {} ));
