@@ -14,6 +14,16 @@ var Guilty = Guilty || {};
     }
 
     /**
+     * Set the review status of an entry
+     *
+     * @param {Entry}   entry  - entry to act upon
+     * @param {boolean} status - new review status
+     */
+    function setReviewStatus(entry, status) {
+        Guilty.Backend.setData(entry, 'Reviewed', status);
+    }
+
+    /**
      * Display the next entry that needs reviewing
      * @param {Entry[]}  entries    - candidate entries to search for
      *                                next item
@@ -41,8 +51,17 @@ var Guilty = Guilty || {};
      *                                reduce candidates for next review
      */
     Review.markReviewed = function(lib, entry, filterNext) {
-        Guilty.Backend.setData(entry, 'Reviewed', true);
+        setReviewStatus(entry, true);
         showNextReview(lib.entries(), filterNext);
+    };
+
+    /**
+     * Reset the review status of an entry
+     *
+     * @param {Entry} entry - entry to act upon
+     */
+    Review.resetReviewStatus = function(entry) {
+        setReviewStatus(entry, false);
     };
 
 }( Guilty.Review = Guilty.Review || {} ));
