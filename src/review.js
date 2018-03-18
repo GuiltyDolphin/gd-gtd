@@ -3,6 +3,17 @@ var Guilty = Guilty || {};
 (function( Review, undefined ) {
 
     /**
+     * Check if an entry has been reviewed
+     *
+     * @param   {Entry}   entry - entry to check
+     * @returns {boolean} `true` if the entry has been reviewed, `false`
+     *                    otherwise
+     */
+    function isReviewed(entry) {
+        return Guilty.Backend.getData(entry, 'Reviewed') === true;
+    }
+
+    /**
      * Display the next entry that needs reviewing
      * @param {Entry[]}  entries    - candidate entries to search for
      *                                next item
@@ -11,7 +22,7 @@ var Guilty = Guilty || {};
      */
     function showNextReview(entries, filterNext) {
         var nextReview = entries.find(function(e) {
-            return !e.field("Reviewed") &&
+            return !isReviewed(e) &&
                 (filterNext === undefined ? true : filterNext(e));
         });
         if (nextReview === undefined) {
@@ -30,7 +41,7 @@ var Guilty = Guilty || {};
      *                                reduce candidates for next review
      */
     Review.markReviewed = function(lib, entry, filterNext) {
-        entry.set("Reviewed", true);
+        Guilty.Backend.setData(entry, 'Reviewed', true);
         showNextReview(lib.entries(), filterNext);
     };
 
