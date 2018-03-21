@@ -5,7 +5,7 @@ var Guilty = Guilty || {};
     var contextMap = {
         '^Draft ideas re:': ['Planning'],
         '^Create task ': ['Phone'],
-        '^Talk to (\\w+) re:': function(match) {
+        '^(?:Talk to(?= \\w+ re:)|Ask) (\\w+) ': function(match) {
             return [match[1]];
         }
     };
