@@ -16,6 +16,10 @@ var Guilty = Guilty || {};
         } else if (title.startsWith('Create task ')) {
             return ['Anywhere', 'Phone'];
         }
+        var match = title.match(/^Talk to (\w+) re:/);
+        if (match) {
+            return ['Anywhere', match[1]];
+        }
         return [];
     };
 
