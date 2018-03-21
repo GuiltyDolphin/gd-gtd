@@ -13,6 +13,8 @@ var Guilty = Guilty || {};
     Context.contextsByName = function(title) {
         if (title.startsWith('Draft ideas re: ')) {
             return ['Anywhere', 'Planning'];
+        } else if (title.startsWith('Create task ')) {
+            return ['Anywhere', 'Phone'];
         }
         return [];
     };
