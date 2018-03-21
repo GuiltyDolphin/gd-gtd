@@ -2,6 +2,14 @@ var Guilty = Guilty || {};
 
 (function( Context, undefined ) {
 
+    var contextMap = {
+        '^Draft ideas re:': ['Planning'],
+        '^Create task ': ['Phone'],
+        '^Talk to (\\w+) re:': function(match) {
+            return [match[1]];
+        }
+    };
+
     /**
      * Determine contexts that should be associated with an action based
      * on its name
@@ -11,16 +19,20 @@ var Guilty = Guilty || {};
      *                     that should be associated with the action
      */
     Context.contextsByName = function(title) {
-        if (title.startsWith('Draft ideas re: ')) {
-            return ['Anywhere', 'Planning'];
-        } else if (title.startsWith('Create task ')) {
-            return ['Anywhere', 'Phone'];
+        var matchRe =
+            Object.keys(contextMap).find(function(regex) {
+                return title.match(regex);
+            });
+        var getContexts = contextMap[matchRe];
+        var extraContexts;
+        if (typeof(getContexts) == 'function') {
+            extraContexts = getContexts(title.match(matchRe));
+        } else if (Array.isArray(getContexts)) {
+            extraContexts = getContexts;
+        } else {
+            return [];
         }
-        var match = title.match(/^Talk to (\w+) re:/);
-        if (match) {
-            return ['Anywhere', match[1]];
-        }
-        return [];
+        return ['Anywhere'].concat(extraContexts);
     };
 
 }( Guilty.Context = Guilty.Context || {} ));
