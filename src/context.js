@@ -7,7 +7,8 @@ var Guilty = Guilty || {};
         '^Create task ': ['Phone'],
         '^(?:Talk to(?= \\w+ re:)|Ask) (\\w+) ': function(match) {
             return [match[1]];
-        }
+        },
+        '^Look up ': ['Network']
     };
 
     /**
