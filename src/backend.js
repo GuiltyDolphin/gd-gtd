@@ -1,5 +1,3 @@
-var Guilty = Guilty || {};
-
 (function( Backend, undefined ) {
 
     /**
@@ -69,4 +67,4 @@ var Guilty = Guilty || {};
             newBackend, null, 2));
     };
 
-}( Guilty.Backend = Guilty.Backend || {} ));
+}( module.exports ));

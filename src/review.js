@@ -1,6 +1,5 @@
-var Guilty = Guilty || {};
-
 (function( Review, undefined ) {
+    var backend = require('./backend.js');
 
     /**
      * Check if an entry has been reviewed
@@ -10,7 +9,7 @@ var Guilty = Guilty || {};
      *                    otherwise
      */
     Review.getReviewed = function(entry) {
-        return Guilty.Backend.getData(entry, 'Reviewed') === true;
+        return backend.getData(entry, 'Reviewed') === true;
     };
 
     /**
@@ -20,7 +19,7 @@ var Guilty = Guilty || {};
      * @param {boolean} status - new review status
      */
     function setReviewStatus(entry, status) {
-        Guilty.Backend.setData(entry, 'Reviewed', status);
+        backend.setData(entry, 'Reviewed', status);
     }
 
     /**
@@ -64,4 +63,4 @@ var Guilty = Guilty || {};
         setReviewStatus(entry, false);
     };
 
-}( Guilty.Review = Guilty.Review || {} ));
+}( module.exports ));

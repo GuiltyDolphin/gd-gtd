@@ -1,5 +1,3 @@
-var Guilty = Guilty || {};
-
 (function( Context, undefined ) {
 
     var contextMap = {
@@ -36,4 +34,4 @@ var Guilty = Guilty || {};
         return ['Anywhere'].concat(extraContexts);
     };
 
-}( Guilty.Context = Guilty.Context || {} ));
+}( module.exports ));
