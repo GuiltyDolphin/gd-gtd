@@ -1,6 +1,9 @@
 {
     "name": "gd-gtd",
     "version": "0.0.1",
+    "devDependencies": {
+        "mocha": "5.x"
+    },
     "scripts": {
         "test": "make test"
     }
