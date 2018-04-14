@@ -1,10 +1,33 @@
 {
-    "name": "gd-gtd",
-    "version": "0.0.1",
-    "devDependencies": {
-        "mocha": "5.x"
-    },
-    "scripts": {
-        "test": "make test"
-    }
+  "name": "gd-gtd",
+  "version": "0.0.1",
+  "devDependencies": {
+    "mocha": "5.x"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "description": "Library for working with GTD.",
+  "main": "gd.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuiltyDolphin/gd-gtd.git"
+  },
+  "keywords": [
+    "gtd",
+    "library"
+  ],
+  "author": {
+    "name": "Ben Moon",
+    "email": "software@guiltydolphin.com",
+    "url": "https://github.com/GuiltyDolphin"
+  },
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/GuiltyDolphin/gd-gtd/issues"
+  },
+  "homepage": "https://github.com/GuiltyDolphin/gd-gtd#readme"
 }
