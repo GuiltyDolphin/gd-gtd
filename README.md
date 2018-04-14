@@ -1,2 +1,3 @@
-# memento-helpers
-Helpers for memento libraries
+# gd-gtd
+
+Library for working with GTD.
