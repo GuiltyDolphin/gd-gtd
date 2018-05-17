@@ -1,0 +1,17 @@
+#+TITLE: Changelog
+
+* Unreleased
+
+** Changed
+
+*** review
+
++ ~markReviewed~ renamed to ~review~
+
++ ~review~ no longer tries to show next entry to review
+
++ Re-wrote review functionality to use timestamps rather than
+  booleans
+
+  + ~getReviewed~ now returns a timestamp (previously returned
+    a boolean)
