@@ -1,6 +1,6 @@
 {
   "name": "gd-gtd",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "lolex": "^2.6.0",
     "mocha": "5.x"
