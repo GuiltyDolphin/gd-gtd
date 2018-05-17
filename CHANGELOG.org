@@ -2,6 +2,8 @@
 
 * Unreleased
 
+* 0.1.1 - 2018-05-17
+
 ** Fixed
 
 + Added missing development dependency (=browserify=)
