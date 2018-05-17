@@ -2,65 +2,30 @@
     var backend = require('./backend.js');
 
     /**
-     * Check if an entry has been reviewed
+     * Get the last time at which an entry was reviewed
      *
      * @param   {Entry}   entry - entry to check
-     * @returns {boolean} `true` if the entry has been reviewed, `false`
-     *                    otherwise
+     * @returns {integer} the time (in milliseconds) since the
+     *                    epoch at which the entry was last
+     *                    reviewed
      */
     Review.getReviewed = function(entry) {
-        return backend.getData(entry, 'Reviewed') === true;
-    };
-
-    /**
-     * Set the review status of an entry
-     *
-     * @param {Entry}   entry  - entry to act upon
-     * @param {boolean} status - new review status
-     */
-    function setReviewStatus(entry, status) {
-        backend.setData(entry, 'Reviewed', status);
-    }
-
-    /**
-     * Display the next entry that needs reviewing
-     * @param {Entry[]}  entries    - candidate entries to search for
-     *                                next item
-     * @param {function} filterNext - predicate function to further
-     *                                reduce candidates for next review
-     */
-    function showNextReview(entries, filterNext) {
-        var nextReview = entries.find(function(e) {
-            return !Review.getReviewed(e) &&
-                (filterNext === undefined ? true : filterNext(e));
-        });
-        if (nextReview === undefined) {
-            message("Nothing left to review");
-        } else {
-            nextReview.show();
+        var reviewData = backend.getData(entry, 'review');
+        if (reviewData !== undefined) {
+            return reviewData.lastReviewed;
         }
-    }
-
-    /**
-     * Mark an entry as reviewed, and display the next unreviewed item
-     *
-     * @param {Library}  lib        - current library
-     * @param {Entry}    entry      - current entry
-     * @param {function} filterNext - predicate function to further
-     *                                reduce candidates for next review
-     */
-    Review.markReviewed = function(lib, entry, filterNext) {
-        setReviewStatus(entry, true);
-        showNextReview(lib.entries(), filterNext);
     };
 
     /**
-     * Reset the review status of an entry
+     * Update the review timestamp of an entry
      *
-     * @param {Entry} entry - entry to act upon
+     * @param {Entry}    entry      - current entry
      */
-    Review.resetReviewStatus = function(entry) {
-        setReviewStatus(entry, false);
+    Review.review = function(entry) {
+        var reviewData = {
+            lastReviewed: new Date().getTime()
+        };
+        backend.setData(entry, 'review', reviewData);
     };
 
 }( module.exports ));

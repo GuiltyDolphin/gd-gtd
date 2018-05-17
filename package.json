@@ -2,6 +2,7 @@
   "name": "gd-gtd",
   "version": "0.0.1",
   "devDependencies": {
+    "lolex": "^2.6.0",
     "mocha": "5.x"
   },
   "scripts": {
