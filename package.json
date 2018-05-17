@@ -6,6 +6,7 @@
     "mocha": "5.x"
   },
   "scripts": {
+    "prepare": "make gd.js",
     "test": "make test"
   },
   "description": "Library for working with GTD.",
