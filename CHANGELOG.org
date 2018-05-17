@@ -10,6 +10,9 @@
 
 + ~review~ no longer tries to show next entry to review
 
++ ~review~ now only takes a single argument (the entry
+  to review)
+
 + Re-wrote review functionality to use timestamps rather than
   booleans
 
